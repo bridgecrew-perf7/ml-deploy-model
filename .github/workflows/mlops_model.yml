@@ -41,8 +41,8 @@ jobs:
         azcliversion: 2.0.72
         inlineScript: |
           az account show
-          az extension add --name azure-cli-ml --debug
-          az extension update -n azure-cli-ml
+          az extension add -s https://azurecliext.blob.core.windows.net/release/azure_cli_ml-1.22.0.1-py3-none-any.whl -y
+          #az extension update -n azure-cli-ml
           MODEL=$(az ml model list --model-name ${{github.event.inputs.model_name}} --resource-group ${{github.event.inputs.source_resource_group}} --workspace-name ${{github.event.inputs.source_workspace}} -l -otsv --query '[].{i:id}' | tr -d '\r')
           az ml model download --model-id $MODEL --target-dir . --workspace-name ${{github.event.inputs.source_workspace}} --resource-group ${{github.event.inputs.source_resource_group}}
 
