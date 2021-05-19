@@ -38,7 +38,7 @@ jobs:
     - name: Download model from source
       uses: azure/CLI@v1
       with:
-        azcliversion: 2.0.72
+        #azcliversion: 2.0.72
         inlineScript: |
           az account show
           az extension add -s https://azurecliext.blob.core.windows.net/release/azure_cli_ml-1.22.0.1-py3-none-any.whl -y
